@@ -5,7 +5,6 @@ set expandtab
 set shiftwidth=4
 set noswapfile
 set mouse=a
-colorscheme calmar256-dark
 
 call plug#begin()
 
@@ -16,18 +15,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 Plug 'sickill/vim-monokai'
 
-
 call plug#end()
 
 let g:fzf_layout = { 'down': '~40%' } 
 
 set modifiable
 
+colorscheme calmar256-dark
+
 " Shortcuts
 " common
 nnoremap <silent><leader>f :Files<CR>
 nnoremap <silent><leader>w :w<CR>
-nnoremap <silent><leader>q :bdelete<CR>
+nnoremap <silent><leader>q :bdelete!<CR>
 nnoremap <silent><leader>t :terminal<CR>
 nnoremap <silent><leader>s :vsplit<CR>
 nnoremap <silent><leader>b :ls<CR>
@@ -39,6 +39,8 @@ nnoremap <silent><C-n> :NERDTree<CR>
 tnoremap <Esc> <C-\><C-n>
 " autocomplete
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+nmap <silent> gd :call CocAction('jumpDefinition')<CR>
+
 
 " 'Most Recent Files' number
 let g:startify_files_number           = 18
